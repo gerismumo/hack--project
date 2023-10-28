@@ -9,7 +9,32 @@ function LoginUser () {
         navigate('/');
     }
     const handleLogin = () => {
-        // Add login logic here (e.g., API calls, authentication)
+        const user = {
+            email: email,
+            password: password,
+          };
+      console.log(user);
+          fetch('http://localhost:5000/api/loginUser', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user), 
+          })
+            .then((response) => {
+              if (response.ok) {
+                return response.json(); 
+              } else {
+                throw new Error('Login failed'); 
+              }
+            })
+            .then((data) => {
+              console.log('Login successful', data);
+             navigate('/dashboard')
+            })
+            .catch((error) => {
+              console.error('Login failed', error);
+            });
       };
 
     return (

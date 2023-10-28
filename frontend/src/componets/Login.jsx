@@ -9,7 +9,25 @@ function Login () {
         navigate('/');
     }
     const handleLogin = () => {
-        // Add login logic here (e.g., API calls, authentication)
+        const user = {
+            email: email,
+            password: password,
+          };
+     
+          fetch('http://localhost:5000/api/loginCooperate', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+          })
+            .then((response) => {
+              if (response.ok) {
+                navigate('/dashboard');
+              } else {
+                console.error('Login failed');
+              }
+            });
       };
 
     return (

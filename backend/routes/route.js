@@ -25,4 +25,26 @@ router.post('/api/register', async (req, res) => {
     }
   });
 
+  router.post('/api/loginCooperate', async (req, res) => {
+    try {
+      const { email, password } = req.body;
+      const user = await controller.loginCooperate(email, password);
+      res.json({ message: 'Login successful', user });
+    } catch (error) {
+      console.error('Login failed:', error);
+      res.status(401).json({ message: error });
+    }
+  });
+
+  router.post('/api/loginUser', async (req, res) => {
+    try {
+      const { email, password } = req.body;
+      const user = await controller.loginUser(email, password);
+      res.json({ message: 'Login successful', user });
+    } catch (error) {
+      console.error('Login failed:', error);
+      res.status(401).json({ message: error });
+    }
+  });
+
   module.exports = router;
