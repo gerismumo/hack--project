@@ -11,3 +11,168 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.header {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.home-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.button-tabs button {
+  padding: 6px 15px;
+}
+
+/* Login.css */
+.login-container {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #f5f5f5;
+  margin-top: 30px;
+}
+
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  margin: 10px 0;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0070ff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0050cc;
+}
+
+a {
+  text-decoration: none;
+  color: #0070ff;
+}
+
+.reg-container {
+  margin-top: 30px;
+}
+
+/* Registration.css */
+.registration-container {
+  /* margin-top: 50px; */
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #f5f5f5;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin: 10px 0;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0070ff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0050cc;
+}
+/* Apply this CSS to style the select element and its options */
+select {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #fff;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+select:hover {
+  border-color: #0070ff; /* Change border color on hover */
+}
+
+/* Style the dropdown arrow (caret) */
+select::after {
+  content: '\25BC'; /* Unicode character for a down arrow */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #0070ff;
+  pointer-events: none;
+}
+
+/* Style the options within the dropdown */
+select option {
+  background: #fff;
+  color: #333;
+  font-size: 16px;
+  padding: 10px;
+}
+
+/* Style the selected option (placeholder text) */
+select option[value=""] {
+  color: #888;
+}
+
+/* Style the selected option (highlight on hover) */
+select option:checked {
+  background: #0070ff;
+  color: #fff;
+}
