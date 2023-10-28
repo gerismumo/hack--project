@@ -14,16 +14,48 @@ function Registration() {
     password: '',
     confirmPassword: '',
     contactNumber: '',
+    typeOfProfile: '',
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
+  const [error, setError] = useState(null);
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add registration logic here (e.g., API calls, data validation)
+   
+    if (formData.password !== formData.confirmPassword) {
+        setError("Password and Confirm Password do not match.");
+        return;
+      }
+  
+      // Create a user object from formData
+      const user = {
+        companyName: formData.companyName,
+        email: formData.email,
+        password: formData.password,
+        contactNumber: formData.contactNumber,
+        typeOfProfile: formData.typeOfProfile,
+      };
+  
+      console.log('user',user);
+      fetch(' http://localhost:5000/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      })
+        .then((response) => {
+          if (response.ok) {
+            
+            navigate('/success');
+          } else {
+           
+            setError("Registration failed. Please try again.");
+          }
+        });
   };
 
   return (
@@ -60,6 +92,18 @@ function Registration() {
             onChange={handleChange}
             required
           />
+        </div>
+        <div className="form-group">
+          <label>Type of Profile</label>
+          <select 
+           name="typeOfProfile"
+           value={formData.typeOfProfile}
+           onChange={handleChange}
+           >
+            <option value=""></option>
+            <option value="Ecommerce">E commerce Page</option>
+            <option value="information">Information Page</option>
+          </select>
         </div>
         <div className="form-group">
           <label>Password</label>
