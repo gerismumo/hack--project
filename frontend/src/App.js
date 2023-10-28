@@ -1,7 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import EDashboard from './componets/Ecom/EDashboard';
 import HomeE from './componets/Ecom/HomeE';
-import UserE from './componets/Ecom/UserE';
 import Home from './componets/Home';
 import Login from './componets/Login';
 import LoginUser from './componets/LoginUser';
@@ -23,7 +22,7 @@ function App() {
         <Route path='/cooperate' element={<HomeE />} />
         <Route path='/information' element={<HomeT />} />
         <Route path='/ecommerceDashboard' element={<EDashboard />} />
-        <Route path='/ecommerce' element={<UserE />} />
+        {/* <Route path='/ecommerce' element={<UserE />} /> */}
       </Routes>
     </Router>
   );

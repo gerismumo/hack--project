@@ -30,7 +30,7 @@ useEffect(() => {
 
 const cooperate_id  = person.cooperate_id;
 // console.log(cooperate_id);
-// console.log(cooperateList);
+console.log('cooperateList',cooperateList);
 const matchingCooperate = cooperateList.find((cooperate) => cooperate.cooperate_id === cooperate_id);
 // console.log(' matchingCooperate ',matchingCooperate);
 
@@ -46,7 +46,7 @@ const matchingCooperate = cooperateList.find((cooperate) => cooperate.cooperate_
                 </div>
       </header>
       <div className="commerce-details">
-      <div className="App">
+      <div className="detils">
       {/* <h1>E-commerce Website</h1> */}
       <div className="products">
         {matchingCooperate ? (
