@@ -8,26 +8,40 @@ function Login () {
     const handleClick = () => {
         navigate('/');
     }
-    const handleLogin = () => {
+    const handleLogin = async() => {
         const user = {
             email: email,
             password: password,
           };
      
-          fetch('http://localhost:5000/api/loginCooperate', {
+          const response = await fetch('http://localhost:5000/api/loginCooperate', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(user),
           })
-            .then((response) => {
-              if (response.ok) {
-                navigate('/dashboard');
+              if (!response.ok) {
+                console.log('Invalid logins');
+              } 
+              const data = await response.json();
+            //   console.log(data.user);
+              localStorage.setItem('Euser', JSON.stringify(data.user));
+              let person = JSON.parse(localStorage.getItem('Euser'));
+              console.log('person',person);
+              if(data.success) {
+                if(person.type_of_profile === 'Ecommerce') {
+                    navigate('/cooperate');
+                
+                } else if (person.type_of_profile === "information") {
+                    navigate('/information');
+                } else {
+
+                }
               } else {
-                console.error('Login failed');
+                    console.log('Failed to');
               }
-            });
+            
       };
 
     return (

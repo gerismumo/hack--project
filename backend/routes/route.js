@@ -29,7 +29,8 @@ router.post('/api/register', async (req, res) => {
     try {
       const { email, password } = req.body;
       const user = await controller.loginCooperate(email, password);
-      res.json({ message: 'Login successful', user });
+      console.log(user);
+      res.json({success:'Login successful', user });
     } catch (error) {
       console.error('Login failed:', error);
       res.status(401).json({ message: error });

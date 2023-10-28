@@ -1,9 +1,11 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import HomeE from './componets/Ecom/HomeE';
 import Home from './componets/Home';
 import Login from './componets/Login';
 import LoginUser from './componets/LoginUser';
 import RegisterUser from './componets/RegisterUser';
 import Registration from './componets/Registration';
+import HomeT from './componets/Text/HomeT';
 import Users from './componets/Users';
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
         <Route path='/registerUser' element={<RegisterUser />} />
         <Route path='/loginUser' element={<LoginUser />}/>
         <Route path='/usersPage' element={<Users />} />
+        <Route path='/cooperate' element={<HomeE />} />
+        <Route path='/information' element={<HomeT />} />
       </Routes>
     </Router>
   );
