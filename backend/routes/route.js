@@ -81,4 +81,15 @@ router.post('/api/register', async (req, res) => {
     }
   });
 
+  router.get('/api/selectCooperateById/:cooperate_id', async(req, res) => {
+    try {
+        const {cooperate_id} = req.params;
+        const data = await controller.selectCooperateById(cooperate_id);
+        res.json({success: true, data});
+    } catch (error) {
+        console.error('Login failed:', error);
+        res.status(401).json({ message: error });
+    }
+  })
+
   module.exports = router;

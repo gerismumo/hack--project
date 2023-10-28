@@ -127,6 +127,22 @@ function insertCooperate(user) {
     });
   }
 
+  function selectCooperateById(cooperate_id) {
+    return new Promise((resolve, reject) => {
+      const sql = 'SELECT * FROM cooperate_table WHERE cooperate_id = ?';
+      const values = [cooperate_id];
+  
+      connection.query(sql, values, (err, results) => {
+        if (err) {
+            console.log(err);
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+  }
+
   module.exports = {
     insertCooperate,
     insertUser,
@@ -135,5 +151,6 @@ function insertCooperate(user) {
     SelectCooperates,
     insertProducts,
     SelectProducts,
+    selectCooperateById,
   }
   

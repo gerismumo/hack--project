@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 function Users() {
     const navigate = useNavigate();
 const[cooperateList, setCooperateList] = useState([]);
@@ -43,10 +43,16 @@ const handleClickPage = () => {
             <h1>Cooperative Webpages</h1>
                 <div className="cooperate-cards">
                     {cooperateList.map((cooperate) => (
-                    <div key={cooperate.cooperate_id} className="cooperate-card">
-                        <h2>{cooperate.cooperate_name}</h2>
-                        <p onClick={handleClickPage}>Visit Page</p>
-                    </div>
+                         <Link
+                         key={cooperate.cooperate_id}
+                         to={`/ecommerce/${cooperate.cooperate_id}`} // Pass the cooperative ID as a URL parameter
+                       >
+                        <div key={cooperate.cooperate_id} className="cooperate-card">
+                            <h2>{cooperate.cooperate_name}</h2>
+                            <p onClick={handleClickPage}>Visit Page</p>
+                        </div>
+                       </Link>
+                    
                     
                     ))}
             </div>
