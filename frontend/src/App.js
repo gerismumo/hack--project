@@ -1,4 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import EDashboard from './componets/Ecom/EDashboard';
 import HomeE from './componets/Ecom/HomeE';
 import Home from './componets/Home';
 import Login from './componets/Login';
@@ -20,6 +21,7 @@ function App() {
         <Route path='/usersPage' element={<Users />} />
         <Route path='/cooperate' element={<HomeE />} />
         <Route path='/information' element={<HomeT />} />
+        <Route path='/ecommerceDashboard' element={<EDashboard />} />
       </Routes>
     </Router>
   );

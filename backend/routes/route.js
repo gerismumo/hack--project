@@ -48,4 +48,37 @@ router.post('/api/register', async (req, res) => {
     }
   });
 
+  router.get('/api/cooperateData', async(req, res) => {
+    try {
+        const cooperates = await controller.SelectCooperates();
+        res.json({success: true, cooperates});
+    } catch (error) {
+        console.error('Login failed:', error);
+      res.status(401).json({ message: error });
+    }
+  });
+
+  router.post('/api/insertproducts', async(req, res) => {
+    try {
+        const { name, price, description,cooperate_id } = req.body;
+        console.log(name, price, description,cooperate_id);
+
+        const cooperates = await controller.insertProducts(name, price, description, cooperate_id);
+        res.json({success: true, cooperates});
+    } catch (error) {
+        console.error('Login failed:', error);
+        res.status(401).json({ message: error });
+    }
+  });
+
+  router.get('/api/selectProducts', async(req, res) => {
+    try {
+        const cooperates = await controller.SelectProducts();
+        res.json({success: true, cooperates});
+    } catch (error) {
+        console.error('Login failed:', error);
+      res.status(401).json({ message: error });
+    }
+  });
+
   module.exports = router;

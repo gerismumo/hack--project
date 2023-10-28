@@ -40,6 +40,19 @@ function insertCooperate(user) {
     });
   }
   
+  function SelectCooperates() {
+    return new Promise((resolve, reject) => {
+      const sql = 'SELECT * FROM cooperate_table';
+      connection.query(sql, (err, results) => {
+        if (err) {
+            console.log(err);
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+  }
   
   
 
@@ -83,12 +96,44 @@ function insertCooperate(user) {
       });
     });
   }
+
+  function insertProducts(name, price, description, cooperate_id) {
+    return new Promise((resolve, reject) => {
+      const sql = 'INSERT INTO ecommerce_website (product_name,product_price, product_text, cooperate_id) VALUES (?, ?, ?, ?)';
+      const values = [name, price, description,cooperate_id];
+      
+      connection.query(sql, values, (err, results) => {
+        if (err) {
+            console.log(err);
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+  }
   
+  function SelectProducts() {
+    return new Promise((resolve, reject) => {
+      const sql = 'SELECT * FROM ecommerce_website';
+      connection.query(sql, (err, results) => {
+        if (err) {
+            console.log(err);
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+  }
 
   module.exports = {
     insertCooperate,
     insertUser,
     loginCooperate,
     loginUser,
+    SelectCooperates,
+    insertProducts,
+    SelectProducts,
   }
   

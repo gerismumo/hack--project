@@ -30,7 +30,7 @@ function LoginUser () {
             })
             .then((data) => {
               console.log('Login successful', data);
-             navigate('/dashboard')
+             navigate('/usersPage')
             })
             .catch((error) => {
               console.error('Login failed', error);

@@ -31,12 +31,12 @@ function Login () {
               console.log('person',person);
               if(data.success) {
                 if(person.type_of_profile === 'Ecommerce') {
-                    navigate('/cooperate');
+                    navigate('/ecommerceDashboard');
                 
                 } else if (person.type_of_profile === "information") {
                     navigate('/information');
                 } else {
-
+                    console.log("User type does not exist");
                 }
               } else {
                     console.log('Failed to');
