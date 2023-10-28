@@ -46,7 +46,7 @@ const matchingCooperate = cooperateList.find((cooperate) => cooperate.cooperate_
                 </div>
       </header>
       <div className="commerce-details">
-      <div className="detils">
+      <div className="App">
       {/* <h1>E-commerce Website</h1> */}
       <div className="products">
         {matchingCooperate ? (
