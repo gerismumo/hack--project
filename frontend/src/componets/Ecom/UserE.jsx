@@ -17,22 +17,7 @@ function UserE() {
     navigate('/');
   }
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/api/selectCooperateById/${id}`) // Remove the colon
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         return response.json();
-  //       } else {
-  //         throw new Error('Failed to fetch data');
-  //       }
-  //     })
-  //     .then((data) => {
-  //       setCooperateList(data.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching cooperative data:', error);
-  //     });
-  // }, [id]); 
+
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/selectCooperateById/${id}`)

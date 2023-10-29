@@ -9,46 +9,38 @@ function EDashboard() {
         name: '',
         price: '',
         description: '',
-        // image: null, // Store the selected image file
+        image: null, // Store the selected image file
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // formData.append('image', product.image);
-        const requestData = {
-          name: product.name,
-          price: product.price,
-          description: product.description,
-        //   image: product.image,
-          cooperate_id: cooperate_id,
-        };
-        console.log(requestData);
-      
+        const formData = new FormData(e.target); // Use e.target to get the form data
+
+        formData.append('cooperate_id', cooperate_id);
+
+        console.log('formData',formData);
+
         // Send the product data to the server to save in the database
         fetch('http://localhost:5000/api/insertproducts', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(requestData), // Use JSON.stringify to convert the object to a JSON string
+            method: 'POST',
+            body: formData,
         })
-          .then((response) => {
-            if (response.ok) {
-              // Product added successfully, you can show a success message
-              console.log('Product added successfully');
-            } else {
-              // Handle errors
-              console.error('Failed to add product');
-            }
-          })
-          .catch((error) => {
-            console.error('Error adding product:', error);
-          });
-      
+            .then((response) => {
+                if (response.ok) {
+                    // Product added successfully, you can show a success message
+                    console.log('Product added successfully');
+                } else {
+                    // Handle errors
+                    console.error('Failed to add product');
+                }
+            })
+            .catch((error) => {
+                console.error('Error adding product:', error);
+            });
+
         // Clear the form fields after submission
-        setProduct({ name: '', price: '', description: '' });
-      };
-      
+        setProduct({ name: '', price: '', description: '', image: null });
+    };
 
     const handleChange = (e) => {
         const { name, value, type } = e.target;
@@ -74,10 +66,10 @@ function EDashboard() {
         navigate('/');
     }
     useEffect(() => {
-        if(!person) {
-          navigate('/');
+        if (!person) {
+            navigate('/');
         }
-      },[person])
+    }, [person])
 
     return (
         <div className="admin-dashboard">
@@ -97,7 +89,7 @@ function EDashboard() {
             </header>
             <div className="ecommerce-dashboard">
                 <h2>Post your products here:</h2>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <div className="form-group">
                         <label>Name:</label>
                         <input
@@ -127,16 +119,16 @@ function EDashboard() {
                             required
                         />
                     </div>
-                    {/* <div className="form-group">
+                    <div className="form-group">
                         <label>Image:</label>
                         <input
                             type="file"
                             name="image"
                             accept="image/*"
-                            onChange={handleChange}
+                            // onChange={handleChange}
                             required
                         />
-                    </div> */}
+                    </div>
                     <button type="submit">Add Product</button>
                 </form>
             </div>
