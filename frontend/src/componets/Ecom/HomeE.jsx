@@ -6,6 +6,7 @@ function HomeE() {
   const navigate = useNavigate();
   let person = JSON.parse(localStorage.getItem('Euser'));
   const[cooperateList, setCooperateList] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleClick = () => {
     navigate('/');
@@ -47,6 +48,21 @@ console.log(matchingCooperate);
       </header>
       <div className="commerce-details">
       <div className="App">
+      <div className="product-search">
+            <input
+              type="text"
+              placeholder="Search for products"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <div className="cart">
+            <h2>Shopping Cart</h2>
+            {/* Cart items go here */}
+            <div className="total">
+              <p>Total: $0.00</p>
+            </div>
+          </div>
+          </div>
       {/* <h1>E-commerce Website</h1> */}
       <div className="products">
         {matchingCooperate  ? (
@@ -60,13 +76,7 @@ console.log(matchingCooperate);
           <p>No available Data</p>
         )}
       </div>
-      <div className="cart">
-        <h2>Shopping Cart</h2>
-        {/* Cart items go here */}
-        <div className="total">
-          <p>Total: $0.00</p>
-        </div>
-      </div>
+      
     </div>
       </div>
     </div>

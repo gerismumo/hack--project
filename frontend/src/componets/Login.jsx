@@ -72,7 +72,10 @@ function Login () {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button onClick={handleLogin}>Login</button>
+        <div className="login-button">
+            <button onClick={handleLogin}>Login</button>
+        </div>
+        
         <p>If you don't have an account, you can <a href="/registration">register here</a>.</p>
             </div>
            
