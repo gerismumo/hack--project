@@ -35,7 +35,16 @@ console.log('cooperateList',cooperateList);
 const matchingCooperate = cooperateList.find((cooperate) => cooperate.cooperate_id === cooperate_id);
 console.log(matchingCooperate);
 
+const logout = () => {
+  localStorage.removeItem('Euser');
+  navigate('/');
+}
 
+// useEffect(() => {
+//   if(!person) {
+//     navigate('/');
+//   }
+// },[person]);
   return (
     <div className="home-commerce">
       <header className="header">
@@ -44,6 +53,9 @@ console.log(matchingCooperate);
                 </div>
                 <div className="button-tabs">
                     <button onClick={handleClick}>Home</button>
+                </div>
+                <div className="button-tabs">
+                    <button onClick={logout}>Logout</button>
                 </div>
       </header>
       <div className="commerce-details">

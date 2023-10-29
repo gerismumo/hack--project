@@ -56,6 +56,11 @@ function UserE() {
 const filteredProducts = productList.filter((product) => product.cooperate_id == matchingCooperate.cooperate_id);
   console.log('filteredProducts', filteredProducts);
 
+  const logout = () => {
+    localStorage.removeItem('Euser');
+    navigate('/');
+}
+
   return (
     <div className="home-commerce">
       <header className="header">
@@ -65,6 +70,9 @@ const filteredProducts = productList.filter((product) => product.cooperate_id ==
         <div className="button-tabs">
           <button onClick={handleClick}>Home</button>
         </div>
+        <div className="button-tabs">
+                    <button onClick={logout}>Logout</button>
+          </div>
       </header>
       <div className="commerce-details">
         <div className="App">

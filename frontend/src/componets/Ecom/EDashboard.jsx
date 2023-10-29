@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function EDashboard() {
@@ -69,6 +69,16 @@ function EDashboard() {
         navigate('/cooperate');
     }
 
+    const logout = () => {
+        localStorage.removeItem('Euser');
+        navigate('/');
+    }
+    useEffect(() => {
+        if(!person) {
+          navigate('/');
+        }
+      },[person])
+
     return (
         <div className="admin-dashboard">
             <header className="header">
@@ -80,6 +90,9 @@ function EDashboard() {
                 </div>
                 <div className="button-tabs">
                     <button onClick={handleClickSite}>WebPage</button>
+                </div>
+                <div className="button-tabs">
+                    <button onClick={logout}>Logout</button>
                 </div>
             </header>
             <div className="ecommerce-dashboard">

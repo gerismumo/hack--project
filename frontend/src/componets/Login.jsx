@@ -8,41 +8,46 @@ function Login () {
     const handleClick = () => {
         navigate('/');
     }
-    const handleLogin = async() => {
+    const handleLogin = async () => {
         const user = {
-            email: email,
-            password: password,
-          };
-     
-          const response = await fetch('http://localhost:5000/api/loginCooperate', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(user),
-          })
-              if (!response.ok) {
-                console.log('Invalid logins');
-              } 
-              const data = await response.json();
-            //   console.log(data.user);
-              localStorage.setItem('Euser', JSON.stringify(data.user));
-              let person = JSON.parse(localStorage.getItem('Euser'));
-              console.log('person',person);
-              if(data.success) {
-                if(person.type_of_profile === 'Ecommerce') {
-                    navigate('/ecommerceDashboard');
-                
-                } else if (person.type_of_profile === "information") {
-                    navigate('/information');
-                } else {
-                    console.log("User type does not exist");
-                }
+          email: email,
+          password: password,
+        };
+      
+        const response = await fetch('http://localhost:5000/api/loginCooperate', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(user),
+        });
+      
+        if (!response.ok) {
+          console.log('Invalid logins');
+        } else {
+          const data = await response.json();
+      
+          if (data.user) {
+            localStorage.setItem('Euser', JSON.stringify(data.user));
+            let person = JSON.parse(localStorage.getItem('Euser'));
+      
+            if (data.success) {
+              if (person && person.type_of_profile === 'Ecommerce') {
+                navigate('/ecommerceDashboard');
+              } else if (person && person.type_of_profile === 'information') {
+                navigate('/information');
               } else {
-                    console.log('Failed to');
+                console.log("User type does not exist");
               }
-            
+            } else {
+              console.log('Login failed.');
+            }
+          } else {
+            console.log('User data not found in response.');
+          }
+        }
       };
+      
 
     return (
         <div className="login">

@@ -3,7 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 function Users() {
     const navigate = useNavigate();
 const[cooperateList, setCooperateList] = useState([]);
-
+let person = JSON.parse(localStorage.getItem('Euser'));
+// useEffect(() => {
+//   if(!person) {
+//     navigate('/');
+//   }
+// },[person])
 useEffect(() => {
     fetch('http://localhost:5000/api/cooperateData')
       .then((response) => {
@@ -29,6 +34,10 @@ useEffect(() => {
 const handleClickPage = () => {
     navigate('/cooperate')
 }
+const logout = () => {
+  localStorage.removeItem('Euser');
+  navigate('/');
+}
     return (
         <div className="users-page">
             <header className="header">
@@ -37,6 +46,9 @@ const handleClickPage = () => {
                 </div>
                 <div className="button-tabs">
                     <button onClick={handleClick}>Home</button>
+                </div>
+                <div className="button-tabs">
+                    <button onClick={logout}>Logout</button>
                 </div>
             </header>
             <div className="users-content">
