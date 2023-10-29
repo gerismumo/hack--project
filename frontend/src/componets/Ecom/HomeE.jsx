@@ -29,10 +29,10 @@ useEffect(() => {
 }, []);
 
 const cooperate_id  = person.cooperate_id;
-// console.log(cooperate_id);
+console.log('cooperate_id',cooperate_id);
 console.log('cooperateList',cooperateList);
 const matchingCooperate = cooperateList.find((cooperate) => cooperate.cooperate_id === cooperate_id);
-// console.log(' matchingCooperate ',matchingCooperate);
+console.log(matchingCooperate);
 
 
   return (
@@ -49,15 +49,13 @@ const matchingCooperate = cooperateList.find((cooperate) => cooperate.cooperate_
       <div className="App">
       {/* <h1>E-commerce Website</h1> */}
       <div className="products">
-        {matchingCooperate ? (
-          cooperateList.map((product) => (
-            <div key={product.cooperate_id} className="product">
-              <h3>{product.product_name}</h3>
-              <p>{product.product_text}</p>
-              <p>${product.product_price}</p>
-              <button>Add to Cart</button>
-            </div>
-          ))
+        {matchingCooperate  ? (
+            <div key={matchingCooperate.cooperate_id} className="product">
+            <h3>{matchingCooperate.product_name}</h3>
+            <p>{matchingCooperate.product_text}</p>
+            <p>${matchingCooperate.product_price}</p>
+            <button>Add to Cart</button>
+          </div>
         ) : (
           <p>No available Data</p>
         )}

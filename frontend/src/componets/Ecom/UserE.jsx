@@ -47,12 +47,15 @@ function UserE() {
         console.error('Error fetching cooperative data:', error);
       });
   }, []);
-  console.log('productList',productList)
+  console.log('productList',productList.cooperate_id);
 
 //   const cooperate_id = person.cooperate_id;
 
   const matchingCooperate = cooperateList.find((cooperate) => cooperate.cooperate_id == id);
-//   console.log('matching cooperate',matchingCooperate)
+
+const filteredProducts = productList.filter((product) => product.cooperate_id == matchingCooperate.cooperate_id);
+  console.log('filteredProducts', filteredProducts);
+
   return (
     <div className="home-commerce">
       <header className="header">
@@ -66,8 +69,8 @@ function UserE() {
       <div className="commerce-details">
         <div className="App">
           <div className="products">
-            {matchingCooperate ? (
-              productList.map((product) => (
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((product) => (
                 <div key={product.cooperate_id} className="product">
                   <h3>{product.product_name}</h3>
                   <p>{product.product_text}</p>

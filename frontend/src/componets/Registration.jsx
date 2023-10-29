@@ -50,7 +50,7 @@ function Registration() {
         .then((response) => {
           if (response.ok) {
             
-            navigate('/success');
+            navigate('/ecommerceDashboard');
           } else {
            
             setError("Registration failed. Please try again.");
