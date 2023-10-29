@@ -96,7 +96,7 @@ function EDashboard() {
                 </div>
             </header>
             <div className="ecommerce-dashboard">
-                <h2>Dashboard</h2>
+                <h2>Post your products here:</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label>Name:</label>

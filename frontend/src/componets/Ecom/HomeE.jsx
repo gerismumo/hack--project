@@ -28,12 +28,13 @@ useEffect(() => {
       console.error('Error fetching cooperative data:', error);
     });
 }, []);
+// console.log('cooperativelist',cooperateList)
 
 const cooperate_id  = person.cooperate_id;
 console.log('cooperate_id',cooperate_id);
 console.log('cooperateList',cooperateList);
-const matchingCooperate = cooperateList.find((cooperate) => cooperate.cooperate_id === cooperate_id);
-console.log(matchingCooperate);
+const matchingCooperate = cooperateList.filter((cooperate) => cooperate.cooperate_id === cooperate_id);
+// console.log('matchingCooperate',matchingCooperate);
 
 const logout = () => {
   localStorage.removeItem('Euser');
@@ -77,13 +78,15 @@ const logout = () => {
           </div>
       {/* <h1>E-commerce Website</h1> */}
       <div className="products">
-        {matchingCooperate  ? (
-            <div key={matchingCooperate.cooperate_id} className="product">
-            <h3>{matchingCooperate.product_name}</h3>
-            <p>{matchingCooperate.product_text}</p>
-            <p>${matchingCooperate.product_price}</p>
-            <button>Add to Cart</button>
-          </div>
+        {matchingCooperate.length > 0 ? (
+          matchingCooperate.map((cooperate) => (
+            <div key={cooperate.product_id} className="product">
+              <h3>{cooperate.product_name}</h3>
+              <p>{cooperate.product_text}</p>
+              <p>${cooperate.product_price}</p>
+              <button>Add to Cart</button>
+            </div>
+          ))
         ) : (
           <p>No available Data</p>
         )}

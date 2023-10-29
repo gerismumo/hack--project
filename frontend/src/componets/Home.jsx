@@ -24,7 +24,7 @@ function Home() {
                 </select>
             </header>
             <div className="home-content">
-                <h1>Welcome to BlueSecureCoop</h1>
+                <h1>Sea Trust Navigator</h1>
                 <p>Connecting Cooperatives for a Sustainable Blue Economy</p>
             </div>
             <div className="features">
