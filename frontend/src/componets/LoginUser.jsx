@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function LoginUser () {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
@@ -33,7 +35,7 @@ function LoginUser () {
              navigate('/usersPage')
             })
             .catch((error) => {
-              console.error('Login failed', error);
+              toast.error('Login failed', error);
             });
       };
 
@@ -47,6 +49,7 @@ function LoginUser () {
                     <button onClick={handleClick}>Home</button>
                 </div>
             </header>
+            <ToastContainer/>
             <div className="login-container">
             <h2>Login</h2>
         <div className="input-container">

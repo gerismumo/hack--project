@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Login () {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
@@ -37,13 +39,13 @@ function Login () {
               } else if (person && person.type_of_profile === 'information') {
                 navigate('/information');
               } else {
-                console.log("User type does not exist");
+                toast.error("User type does not exist");
               }
             } else {
-              console.log('Login failed.');
+              toast.error('Login failed.');
             }
           } else {
-            console.log('User data not found in response.');
+            toast.error('User data not found.');
           }
         }
       };
@@ -59,6 +61,7 @@ function Login () {
                     <button onClick={handleClick}>Home</button>
                 </div>
             </header>
+            <ToastContainer />
             <div className="login-container">
             <h2>Login</h2>
         <div className="input-container">
