@@ -82,8 +82,8 @@ const logout = () => {
           matchingCooperate.map((cooperate) => (
             <div key={cooperate.product_id} className="product">
               <h3>{cooperate.product_name}</h3>
-              <p>{cooperate.product_text}</p>
-              <p>${cooperate.product_price}</p>
+              <p>Description: {cooperate.product_text}</p>
+              <p>Price: ${cooperate.product_price}</p>
               <button>Add to Cart</button>
             </div>
           ))

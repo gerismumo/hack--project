@@ -57,15 +57,13 @@ const logout = () => {
                     {cooperateList.map((cooperate) => (
                          <Link
                          key={cooperate.cooperate_id}
-                         to={`/ecommerce/${cooperate.cooperate_id}`} // Pass the cooperative ID as a URL parameter
+                         to={`/ecommerce/${cooperate.cooperate_id}`} 
                        >
                         <div key={cooperate.cooperate_id} className="cooperate-card">
                             <h2>{cooperate.cooperate_name}</h2>
                             <p onClick={handleClickPage}>Visit Page</p>
                         </div>
                        </Link>
-                    
-                    
                     ))}
             </div>
             </div>

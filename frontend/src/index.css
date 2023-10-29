@@ -228,7 +228,9 @@ h1 {
   display: flex;
   flex-wrap: wrap;
 }
-
+.cooperate-cards a{
+  text-decoration: none;
+}
 .cooperate-card {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -240,7 +242,15 @@ h1 {
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
 }
-
+.cooperate-card h2 {
+  color: orangered;
+  font-weight: 700;
+}
+.cooperate-card p {
+  color: #0070ff;
+  font-weight: 400;
+  font-size: 15px;
+}
 .cooperate-card:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);

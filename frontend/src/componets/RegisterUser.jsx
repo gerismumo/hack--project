@@ -53,7 +53,7 @@ function RegisterUser() {
       .then((response) => {
         if (response.ok) {
           // Registration successful, you can navigate the user to another page
-          navigate('/success');
+          navigate('/loginUser');
         } else {
           // Handle registration error
           setError("Registration failed. Please try again.");
