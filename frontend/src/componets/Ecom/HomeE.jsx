@@ -47,6 +47,7 @@ const matchingCooperate = cooperateList.filter((cooperate) => cooperate.cooperat
 
 const logout = () => {
   localStorage.removeItem('Euser');
+  navigate('/')
  
 }
 
@@ -92,10 +93,15 @@ const logout = () => {
         {matchingCooperate.length > 0 ? (
           matchingCooperate.map((cooperate) => (
             <div key={cooperate.product_id} className="product">
-              <h3>{cooperate.product_name}</h3>
-              <p>Description: {cooperate.product_text}</p>
-              <p>Price: ${cooperate.product_price}</p>
-              <button>Add to Cart</button>
+              <div className="product-items">
+                <h3>{cooperate.product_name}</h3>
+                <img src={URL.createObjectURL(new Blob([new Uint8Array(cooperate.product_image.data)],{type: 'image/jpeg', }))} alt="" 
+                width='100px' height='80px'
+                  />
+                <p>Description: {cooperate.product_text}</p>
+                <p>Price: ${cooperate.product_price}</p>
+                <button>Add to Cart</button>
+              </div>
             </div>
           ))
         ) : (

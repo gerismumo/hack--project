@@ -63,12 +63,16 @@ function UserE() {
 //   const cooperate_id = person.cooperate_id;
 
   const matchingCooperate = cooperateList.find((cooperate) => cooperate.cooperate_id == id);
-  console.log('matchingCooperate',matchingCooperate);
-  // if(matchingCooperate) {
-  //   const cooperateName = matchingCooperate.cooperate_name;
-  // }
 
-const filteredProducts = productList.filter((product) => product.cooperate_id == matchingCooperate.cooperate_id);
+  console.log('matchingCooperate',matchingCooperate);
+
+  let filteredProducts;
+  
+  if(matchingCooperate) {
+    filteredProducts = productList.filter((product) => product.cooperate_id == matchingCooperate.cooperate_id);
+  }
+
+
   console.log('filteredProducts', filteredProducts);
 
   const logout = () => {
@@ -115,6 +119,9 @@ const filteredProducts = productList.filter((product) => product.cooperate_id ==
                 filteredProducts.map((product) => (
                   <div key={product.cooperate_id} className="product">
                     <h3>{product.product_name}</h3>
+                    <img src={URL.createObjectURL(new Blob([new Uint8Array(product.product_image.data)],{type: 'image/jpeg', }))} alt="" 
+                      width='100px' height='80px'
+                        />
                     <p>{product.product_text}</p>
                     <p>${product.product_price}</p>
                     <button>Add to Cart</button>

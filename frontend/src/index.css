@@ -343,11 +343,18 @@ h2 {
   padding: 10px;
   border-radius: 5px;
   transition: box-shadow 0.3s;
+  flex-direction: column;
 }
 
 .home-commerce .product:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   transform: scale(1.02);
+}
+
+.home-commerce .product .product-items{
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 }
 
 .home-commerce .product h3 {

@@ -25,16 +25,7 @@ function EDashboard()  {
         formData.append('description',description);
         formData.append('cooperate_id', cooperate_id);
 
-        // const requestData = {
-        //   name: product.name,
-        //   price: product.price,
-        //   description: product.description,
-        //   cooperate_id: cooperate_id,
-        // };
-
-        // console.log(requestData);
-      
-       
+    
         
       try {
         const response = await axios.post('http://localhost:5000/api/insertProducts', formData);
@@ -119,7 +110,7 @@ function EDashboard()  {
                             name="description"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            required
+                           
                         />
                     </div>
                     <div className="form-group">

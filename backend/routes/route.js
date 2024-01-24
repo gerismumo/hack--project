@@ -70,7 +70,7 @@ router.post('/api/register', async (req, res) => {
 
     const name = formData.name;
     const price = formData.price;
-    const description = formData.description;
+    const description = formData.description || '';
     const cooperate_id = formData.cooperate_id;
     const image = file.buffer;
 
