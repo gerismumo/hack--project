@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controller/controller');
+const multer = require('multer');
+
+const storage = multer.memoryStorage();
+const upload = multer({storage: storage});
 
 router.post('/api/register', async (req, res) => {
     try {
@@ -58,12 +62,23 @@ router.post('/api/register', async (req, res) => {
     }
   });
 
-  router.post('/api/insertproducts', async(req, res) => {
-    try {
-        const { name, price, description,cooperate_id } = req.body;
-      
+  router.post('/api/insertProducts', upload.single('image'), async(req, res) => {
+    const formData = req.body;
+    const file = req.file;
+    console.log(file);
+  
 
-        const cooperates = await controller.insertProducts(name, price, description, cooperate_id);
+    const name = formData.name;
+    const price = formData.price;
+    const description = formData.description;
+    const cooperate_id = formData.cooperate_id;
+    const image = file.buffer;
+
+    console.log(name, price, description, cooperate_id);
+
+    try {
+       
+        const cooperates = await controller.insertProducts(name, price, description, cooperate_id, image);
         res.json({success: true, cooperates});
     } catch (error) {
         console.error('Login failed:', error);

@@ -20,7 +20,7 @@ const corsOptions = {
   credentials: true,
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json({ limit: '200mb' }));
 app.use(bodyParser.json({ limit: '200mb' }));
 app.use(bodyParser.urlencoded({ limit: '200mb', extended: true }));

@@ -109,11 +109,11 @@ async function insertCooperate(user) {
     });
   }
 
-  async function insertProducts(name, price, description, cooperate_id) {
+  async function insertProducts(name, price, description, cooperate_id, image) {
     const connection = await database.createConnection();
     return new Promise((resolve, reject) => {
-      const sql = 'INSERT INTO ecommerce_website (product_name,product_price, product_text, cooperate_id) VALUES (?, ?, ?, ?)';
-      const values = [name, price, description,cooperate_id];
+      const sql = 'INSERT INTO ecommerce_website (product_name,product_price, product_text, cooperate_id, product_image) VALUES (?, ?, ?, ?, ?)';
+      const values = [name, price, description,cooperate_id, image];
       
       connection.query(sql, values, (err, results) => {
         if (err) {
