@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 function RegisterUser() {
+  const API_URL = process.env.REACT_APP_API;
   const navigate = useNavigate();
   const handleClick = () => {
     navigate('/');
@@ -43,7 +44,7 @@ function RegisterUser() {
     console.log('user', user);
 
     // Perform registration logic using the Fetch API
-    fetch('http://localhost:5000/api/registerUser', {
+    fetch(`${API_URL}/api/registerUser`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

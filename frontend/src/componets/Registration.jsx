@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Registration() {
+  const API_URL = process.env.REACT_APP_API;
     const navigate = useNavigate();
     const handleClick = () => {
         navigate('/');
@@ -40,7 +41,7 @@ function Registration() {
       };
   
       console.log('user',user);
-      fetch(' http://localhost:5000/api/register', {
+      fetch(`${API_URL}/api/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

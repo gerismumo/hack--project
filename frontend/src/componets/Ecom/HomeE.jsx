@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function HomeE() {
+
+  const API_URL = process.env.REACT_APP_API;
+
   const navigate = useNavigate();
   let person = JSON.parse(localStorage.getItem('Euser'));
   const[cooperateList, setCooperateList] = useState([]);
@@ -12,8 +15,9 @@ function HomeE() {
     navigate('/');
 }
 
+
 useEffect(() => {
-  fetch('http://localhost:5000/api/selectProducts')
+  fetch( API_URL + '/api/selectProducts')
     .then((response) => {
       if (response.ok) {
         return response.json();

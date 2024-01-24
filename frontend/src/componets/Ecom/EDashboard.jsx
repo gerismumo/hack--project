@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function EDashboard()  {
+    const API_URL = process.env.REACT_APP_API;
     const navigate = useNavigate();
     let person = JSON.parse(localStorage.getItem('Euser'));
     const cooperate_id = person.cooperate_id;
@@ -28,7 +29,7 @@ function EDashboard()  {
     
         
       try {
-        const response = await axios.post('http://localhost:5000/api/insertProducts', formData);
+        const response = await axios.post( `${API_URL}/api/insertProducts`, formData);
         console.log(response);
 
       } catch(error) {

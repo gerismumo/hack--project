@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 function UserE() {
+  const API_URL = process.env.REACT_APP_API;
   const { id } = useParams();
   console.log('id', id);
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ function UserE() {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/selectCooperateById/${id}`)
+    fetch(`${API_URL}/api/selectCooperateById/${id}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error fetching cooperative data');
@@ -43,7 +44,7 @@ function UserE() {
   console.log('cooperateList',cooperateList);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/selectProducts')
+    fetch(`${API_URL}/api/selectProducts`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -67,7 +68,7 @@ function UserE() {
   console.log('matchingCooperate',matchingCooperate);
 
   let filteredProducts;
-  
+
   if(matchingCooperate) {
     filteredProducts = productList.filter((product) => product.cooperate_id == matchingCooperate.cooperate_id);
   }

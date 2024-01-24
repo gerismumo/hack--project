@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function Login () {
+  const API_URL = process.env.REACT_APP_API;
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,7 +17,7 @@ function Login () {
           password: password,
         };
       
-        const response = await fetch('http://localhost:5000/api/loginCooperate', {
+        const response = await fetch(`${API_URL}/api/loginCooperate`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

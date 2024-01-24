@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function LoginUser () {
+  const API_URL = process.env.REACT_APP_API;
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,7 +17,7 @@ function LoginUser () {
             password: password,
           };
       console.log(user);
-          fetch('http://localhost:5000/api/loginUser', {
+          fetch(`${API_URL}/api/loginUser`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
