@@ -29,16 +29,25 @@ useEffect(() => {
     });
 }, []);
 // console.log('cooperativelist',cooperateList)
+const[openCurrenPage, setOpenCurrentPage] = useState(false);
+const cooperate_id  = person?.cooperate_id;
 
-const cooperate_id  = person.cooperate_id;
-console.log('cooperate_id',cooperate_id);
-console.log('cooperateList',cooperateList);
+useEffect(() => {
+  if(cooperate_id === undefined ) {
+    setOpenCurrentPage(false);
+    navigate('/');
+  }else {
+    setOpenCurrentPage(true);
+  }
+},[cooperate_id]);
+
+
 const matchingCooperate = cooperateList.filter((cooperate) => cooperate.cooperate_id === cooperate_id);
 // console.log('matchingCooperate',matchingCooperate);
 
 const logout = () => {
   localStorage.removeItem('Euser');
-  navigate('/');
+ 
 }
 
 // useEffect(() => {
@@ -47,7 +56,9 @@ const logout = () => {
 //   }
 // },[person]);
   return (
-    <div className="home-commerce">
+    <>
+    {openCurrenPage && (
+      <div className="home-commerce">
       <header className="header">
                 <div className="log-area">
                     <h2>{person.cooperate_name}</h2>
@@ -95,6 +106,9 @@ const logout = () => {
     </div>
       </div>
     </div>
+    )}
+    </>
+    
   )
 }
 

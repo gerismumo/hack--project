@@ -5,7 +5,7 @@ const controller = require('../controller/controller');
 router.post('/api/register', async (req, res) => {
     try {
       const user = req.body; 
-    //   console.log(user);
+
       const result = await controller.insertCooperate(user);
       res.json({ message: 'Registration successful', result });
     } catch (error) {
@@ -16,7 +16,7 @@ router.post('/api/register', async (req, res) => {
   router.post('/api/registerUser', async (req, res) => {
     try {
       const user = req.body;
-    //   console.log(user);
+   
       const result = await controller.insertUser(user);
       res.json({ message: 'Registration successful', result });
     } catch (error) {
@@ -61,7 +61,7 @@ router.post('/api/register', async (req, res) => {
   router.post('/api/insertproducts', async(req, res) => {
     try {
         const { name, price, description,cooperate_id } = req.body;
-        console.log(name, price, description,cooperate_id);
+      
 
         const cooperates = await controller.insertProducts(name, price, description, cooperate_id);
         res.json({success: true, cooperates});
@@ -90,6 +90,6 @@ router.post('/api/register', async (req, res) => {
         console.error('Login failed:', error);
         res.status(401).json({ message: error });
     }
-  })
+  });
 
   module.exports = router;

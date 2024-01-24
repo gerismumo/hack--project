@@ -102,7 +102,11 @@ function Registration() {
            >
             <option value=""></option>
             <option value="Ecommerce">E commerce Page</option>
-            <option value="information">Information Page</option>
+            <option value="information">Blogs Information</option>
+            <option value="information">Static websites</option>
+            <option value="information">Forums</option>
+            <option value="information">Social networks</option>
+            <option value="information">Portfolios</option>
           </select>
         </div>
         <div className="form-group">

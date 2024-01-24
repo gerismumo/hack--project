@@ -3,20 +3,43 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 
-const connection =mysql.createConnection({
+const config = {
     host: process.env.HOST,
-    user: process.env.USER,
+    database : process.env.DATABASE,
     password: process.env.PASSWORD,
-    database: process.env.DATABASE,
-    port: process.env.DB_PORT,
-    timeout: 60000 
-});
+    user: process.env.USER,
+    // port: process.env.DB_PORT
+    port: 3306,
+}
 
-connection.connect((err) => {
-    if(err){
-        console.log(err.message);
+const createConnection = async () => {
+    const connection =   mysql.createConnection(config);;
+    try {
+        await new Promise((resolve, reject) => {
+            connection.connect((err) => {
+                if(err){
+                    reject(err);
+                }else{
+                    resolve();
+                }
+            });
+        });
+        console.log('connection created');
+        return connection;
+
+    } catch (err) {
+        console.error(err)
     }
-    console.log('database' + ' ' + connection.state);
-});
+}
 
-module.exports = connection;
+const closeConnection = (connection) => {
+    connection.end((err) => {
+      if (err) {
+        console.error('Error closing connection:', err);
+      } else {
+        console.log('Connection closed');
+      }
+    });
+  };
+
+module.exports = {createConnection, closeConnection};

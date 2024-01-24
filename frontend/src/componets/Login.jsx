@@ -61,8 +61,9 @@ function Login () {
                     <button onClick={handleClick}>Home</button>
                 </div>
             </header>
-            <ToastContainer />
+            
             <div className="login-container">
+            <ToastContainer />
             <h2>Login</h2>
         <div className="input-container">
           <input

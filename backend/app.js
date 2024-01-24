@@ -7,10 +7,7 @@ const dotenv = require('dotenv');
 dotenv.config({path: './database/.env'});
 
 
-// const corsOptions = {
-//     origin: 'https://rsvp.blueeconomysummit.co.ke',
-//     methods: ['POST', 'GET', 'PUT', 'DELETE'],
-//   };
+;
 
 app.use(cors());
 app.use(express.json({ limit: '200mb' }));
